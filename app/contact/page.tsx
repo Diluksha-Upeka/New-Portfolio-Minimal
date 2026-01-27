@@ -119,7 +119,7 @@ export default function ContactPage() {
           </h2>
           <p className="text-zen-600 dark:text-zen-400 mb-6 max-w-2xl mx-auto">
             I&apos;m currently available for freelance projects, full-time positions,
-            or collaboration on interesting ideas. Let's create something
+            or collaboration on interesting ideas. Let&apos;s create something
             amazing together.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
