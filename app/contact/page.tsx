@@ -42,10 +42,10 @@ export default function ContactPage() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-zen-900 dark:text-zen-50">
-            Let's Connect
+            Let&apos;s Connect
           </h1>
           <p className="text-lg md:text-xl text-zen-600 dark:text-zen-400 max-w-2xl mx-auto">
-            Have a project in mind or just want to say hello? I'd love to hear
+            Have a project in mind or just want to say hello? I&apos;d love to hear
             from you.
           </p>
         </motion.div>
@@ -118,7 +118,7 @@ export default function ContactPage() {
             Open to Opportunities
           </h2>
           <p className="text-zen-600 dark:text-zen-400 mb-6 max-w-2xl mx-auto">
-            I'm currently available for freelance projects, full-time positions,
+            I&apos;m currently available for freelance projects, full-time positions,
             or collaboration on interesting ideas. Let's create something
             amazing together.
           </p>

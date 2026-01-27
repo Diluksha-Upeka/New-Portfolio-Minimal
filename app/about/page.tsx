@@ -53,11 +53,11 @@ export default function AboutPage() {
           className="glass glass-border rounded-3xl p-8 md:p-12 mb-16"
         >
           <h2 className="text-2xl md:text-3xl font-bold mb-6 text-zen-900 dark:text-zen-50">
-            Hi, I'm [Your Name] 👋
+            Hi, I&apos;m [Your Name] 👋
           </h2>
           <div className="space-y-4 text-zen-700 dark:text-zen-300 text-lg leading-relaxed">
             <p>
-              I'm a full-stack developer with a passion for creating beautiful,
+              I&apos;m a full-stack developer with a passion for creating beautiful,
               functional, and user-friendly web applications. My approach
               combines minimalist design principles with modern development
               practices.
@@ -69,7 +69,7 @@ export default function AboutPage() {
               simplicity in design.
             </p>
             <p>
-              When I'm not coding, you'll find me exploring new technologies,
+              When I&apos;m not coding, you&apos;ll find me exploring new technologies,
               contributing to open source, or seeking inspiration in minimalist
               design and architecture.
             </p>

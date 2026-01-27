@@ -58,7 +58,7 @@ export default function ContactForm() {
             Message Sent!
           </h3>
           <p className="text-zen-600 dark:text-zen-400">
-            Thank you for reaching out. I'll get back to you soon.
+            Thank you for reaching out. I&apos;ll get back to you soon.
           </p>
         </motion.div>
       ) : (
