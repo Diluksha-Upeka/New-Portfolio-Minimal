@@ -27,7 +27,7 @@ export default function RootLayout({
             <a href="#tech" className="hover:text-zen-text transition-colors">Tech</a>
             <a href="#work" className="hover:text-zen-text transition-colors">Experience</a>
             <a href="#projects" className="hover:text-zen-text transition-colors">Projects</a>
-            <a href="mailto:upeka.diluksha@example.com" className="hover:text-zen-text transition-colors">Contact</a>
+            <a href="mailto:dilukshaupeka@gmail.com" className="hover:text-zen-text transition-colors">Contact</a>
           </nav>
         </header>
         <main className="fade-in">
