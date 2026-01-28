@@ -7,6 +7,13 @@ export default async function Home() {
   // Featured projects curated for engineering impact
   const featuredProjects = [
     {
+      name: "End-to-End MLOps Pipeline & Deployment",
+      description: "Architected a full-stack Machine Learning application with a CI/CD pipeline, Docker containerization, and production deployment on Render Cloud, moving beyond static notebooks.",
+      learning: "Implemented Containerization (Docker), Automation (GitHub Actions), and Deployment for a production-ready ML workflow.",
+      tech: ["Python", "Flask", "Docker", "Render", "GitHub Actions"],
+      link: "https://salary-prediction-mlops.onrender.com/"
+    },
+    {
       name: "Resume Optimizer",
       description: "A Streamlit dashboard that parses resumes into JSON and gives an ATS score using Llama 3.",
       learning: "Structured Output (JSON) and system prompts.",
@@ -17,7 +24,7 @@ export default async function Home() {
       name: "EV Charging Station Management Platform",
       description: "Built a full-stack system enabling real-time charger availability, booking, and route-aware station selection. Implemented live updates using WebSockets and designed the backend.",
       learning: "Designed real-time systems and managed state consistency across clients.",
-      tech: ["React", "Node.js", "Socket.io"],
+      tech: ["React","Express", "MongoDB", "Node.js"],
       link: "https://electric-vehicle-booking-system.vercel.app/"
     },
     {
@@ -238,7 +245,7 @@ export default async function Home() {
                    <h3 className="font-heading text-xl md:text-2xl font-bold text-zen-text group-hover:text-zen-accent transition-colors flex items-center gap-2">
                       {project.name}
                    </h3>
-                   <div className="flex gap-2">
+                   <div className="flex gap-2 flex-wrap items-center">
                       {project.tech.map(t => (
                         <span key={t} className="px-2.5 py-1 bg-zen-paper text-zen-subtext text-xs font-medium rounded border border-zen-surface">
                           {t}

@@ -18,7 +18,7 @@ export interface GitHubRepo {
   pushed_at: string;
 }
 
-const GITHUB_USERNAME = 'UpekaDiluksha'; // Replace with your GitHub username
+const GITHUB_USERNAME = 'Diluksha-Upeka'; // Replace with your GitHub username
 const GITHUB_API = 'https://api.github.com';
 
 /**
