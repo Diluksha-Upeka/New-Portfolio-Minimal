@@ -18,7 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="max-w-3xl mx-auto px-6 py-6 md:py-8 min-h-screen selection:bg-zen-surface bg-zen-bg text-zen-text">
+      <body className="max-w-3xl mx-auto px-6 py-6 md:py-8 min-h-screen selection:bg-zen-surface bg-zen-bg text-zen-text relative">
+        <div className="fixed inset-0 z-[-1] bg-grid-zen pointer-events-none" />
         <header className="mb-12 flex justify-between items-baseline">
           <a href="/" className="font-heading text-xl font-bold tracking-tight hover:opacity-70 transition-opacity">
             UD.
