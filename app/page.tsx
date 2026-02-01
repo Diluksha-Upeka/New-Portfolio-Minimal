@@ -1,45 +1,17 @@
 import { ArrowUpRight, Mail, ChevronRight, Download, Github, Linkedin } from "lucide-react";
 import Image from "next/image";
+import ScrollProgress from "@/components/ScrollProgress";
+import FeaturedProjects from "@/components/FeaturedProjects";
 
 export const revalidate = 3600;
 
 export default async function Home() {
-  // Featured projects curated for engineering impact
-  const featuredProjects = [
-    {
-      name: "End-to-End MLOps Pipeline & Deployment",
-      description: "Architected a full-stack Machine Learning application with a CI/CD pipeline, Docker containerization, and production deployment on Render Cloud, moving beyond static notebooks.",
-      learning: "Implemented Containerization (Docker), Automation (GitHub Actions), and Deployment for a production-ready ML workflow.",
-      tech: ["Python", "Flask", "Docker", "Render", "GitHub Actions"],
-      link: "https://salary-prediction-mlops.onrender.com/"
-    },
-    {
-      name: "Resume Optimizer",
-      description: "A Streamlit dashboard that parses resumes into JSON and gives an ATS score using Llama 3.",
-      learning: "Structured Output (JSON) and system prompts.",
-      tech: ["Python", "Streamlit", "LangChain", "Llama 3"],
-      link: "https://ai-resume-diluksha.streamlit.app/"
-    },
-    {
-      name: "EV Charging Station Management Platform",
-      description: "Built a full-stack system enabling real-time charger availability, booking, and route-aware station selection. Implemented live updates using WebSockets and designed the backend.",
-      learning: "Designed real-time systems and managed state consistency across clients.",
-      tech: ["React","Express", "MongoDB", "Node.js"],
-      link: "https://electric-vehicle-booking-system.vercel.app/"
-    },
-    {
-      name: "LiveTalk – Secure Real-Time Communication",
-      description: "Designed a multi-user chat system with message flows, and communication using Socket.io.",
-      learning: "Explored real-time scalability, message synchronization, and user presence management.",
-      tech: ["React", "Socket.io"],
-      link: "https://live-talk.onrender.com/"
-    }
-  ];
-
   return (
-    <div className="space-y-24 md:space-y-32">
+    <div className="space-y-24 md:space-y-32 relative">
+      <ScrollProgress />
+      
       {/* Bio Section */}
-      <section className="space-y-8 fade-in">
+      <section id="home" className="space-y-8 fade-in scroll-mt-32">
         <div className="flex flex-col-reverse md:flex-row gap-8 items-center md:items-start justify-between">
           <div className="space-y-2 flex-1">
             <p className="text-zen-subtext font-medium tracking-wide text-sm uppercase">Final-Year Computer Engineering Undergraduate, University of Ruhuna.</p>
@@ -237,39 +209,7 @@ export default async function Home() {
         </div>
 
         <div className="space-y-16">
-          {/* Curated Featured Projects */}
-          <div className="grid grid-cols-1 gap-8">
-            {featuredProjects.map((project) => (
-              <a href={project.link} target="_blank" key={project.name} className="block group p-6 md:p-8 bg-white rounded-2xl border border-zen-surface hover:border-zen-subtext/30 transition-all duration-300 shadow-sm hover:shadow-md">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
-                   <h3 className="font-heading text-xl md:text-2xl font-bold text-zen-text group-hover:text-zen-accent transition-colors flex items-center gap-2">
-                      {project.name}
-                   </h3>
-                   <div className="flex gap-2 flex-wrap items-center">
-                      {project.tech.map(t => (
-                        <span key={t} className="px-2.5 py-1 bg-zen-paper text-zen-subtext text-xs font-medium rounded border border-zen-surface">
-                          {t}
-                        </span>
-                      ))}
-                   </div>
-                </div>
-                <div className="space-y-4">
-                  <p className="text-zen-text leading-relaxed text-base md:text-lg border-l-2 border-zen-surface pl-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-                    <p className="text-sm text-zen-subtext font-medium flex items-center gap-2">
-                      <span className="w-1 h-1 rounded-full bg-zen-accent"></span>
-                      <span className="italic">Key learning: {project.learning}</span>
-                    </p>
-                    <span className="shrink-0 inline-flex items-center text-sm font-bold text-zen-subtext group-hover:text-zen-accent transition-colors border-b border-transparent group-hover:border-zen-accent pb-0.5">
-                      View Project <ArrowUpRight size={16} className="ml-1" />
-                    </span>
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
+          <FeaturedProjects />
 
           {/* Manually Curated "More from GitHub" Section - NO LOADING STATE */}
           <div className="space-y-8">
