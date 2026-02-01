@@ -172,7 +172,7 @@ export default function FeaturedProjects() {
                     
                     <div className="bg-zen-paper/50 p-3 rounded-lg border border-zen-surface/50">
                          <p className="text-xs font-bold uppercase tracking-widest text-zen-subtext mb-1">Key Insight</p>
-                         <p className="italic font-medium text-zen-text/80">"{selectedProject.learning}"</p>
+                         <p className="italic font-medium text-zen-text/80">&quot;{selectedProject.learning}&quot;</p>
                     </div>
 
                     <div className="pt-2">
