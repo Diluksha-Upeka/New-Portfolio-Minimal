@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import ScrollToTop from "@/components/ScrollToTop";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: '--font-space' });
@@ -19,19 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="max-w-3xl mx-auto px-6 py-6 md:py-8 min-h-screen selection:bg-zen-surface bg-zen-bg text-zen-text relative">
+        <div className="noise-bg" />
         <div className="fixed inset-0 z-[-1] bg-grid-zen pointer-events-none" />
-        <header className="mb-12 flex justify-between items-baseline">
-          <a href="/" className="font-heading text-xl font-bold tracking-tight hover:opacity-70 transition-opacity">
-            UD.
-          </a>
-          <nav className="flex gap-6 text-sm font-medium text-zen-subtext">
-            <a href="#tech" className="hover:text-zen-text transition-colors">Tech</a>
-            <a href="#work" className="hover:text-zen-text transition-colors">Experience</a>
-            <a href="#projects" className="hover:text-zen-text transition-colors">Projects</a>
-            <a href="mailto:dilukshaupeka@gmail.com" className="hover:text-zen-text transition-colors">Contact</a>
-          </nav>
-        </header>
-        <main className="fade-in">
+        <Navbar />
+        <main className="fade-in pt-24">
           {children}
         </main>
         <ScrollToTop />
