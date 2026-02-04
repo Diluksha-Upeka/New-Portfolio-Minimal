@@ -23,7 +23,7 @@ export default function RootLayout({
         <div className="noise-bg" />
         <div className="fixed inset-0 z-[-1] bg-grid-zen pointer-events-none" />
         <Navbar />
-        <main className="fade-in pt-24">
+        <main className="fade-in pt-20 md:pt-24">
           {children}
         </main>
         <ScrollToTop />
