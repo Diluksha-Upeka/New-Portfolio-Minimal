@@ -145,14 +145,22 @@ export default function FeaturedProjects() {
               </button>
 
               {/* Image Section - Top */}
-              <div className="relative flex h-48 shrink-0 items-center justify-center rounded-t-2xl border-b border-zen-surface/50 bg-stone-100 p-4 sm:h-56">
+              <div className="relative flex h-48 shrink-0 items-center justify-center overflow-hidden rounded-t-2xl border-b border-zen-surface/50 bg-stone-100 sm:h-56">
                 {selectedProject.image ? (
-                  <Image
-                    src={selectedProject.image}
-                    alt={selectedProject.name}
-                    fill
-                    className="object-contain p-2"
-                  />
+                  <>
+                    <Image
+                      src={selectedProject.image}
+                      alt=""
+                      fill
+                      className="object-cover opacity-30 blur-md"
+                    />
+                    <Image
+                      src={selectedProject.image}
+                      alt={selectedProject.name}
+                      fill
+                      className="z-10 object-contain p-4 transition-transform duration-500 hover:scale-105"
+                    />
+                  </>
                 ) : (
                   <div className="text-4xl opacity-20">🖼️</div>
                 )}
