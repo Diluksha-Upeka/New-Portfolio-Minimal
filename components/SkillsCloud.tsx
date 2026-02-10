@@ -34,19 +34,19 @@ const item = {
 
 export default function SkillsCloud() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section className="px-4 py-24 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-zen-900 dark:text-zen-50">
+          <h2 className="text-zen-900 dark:text-zen-50 mb-4 text-4xl font-bold md:text-5xl">
             Skills & Technologies
           </h2>
-          <p className="text-lg text-zen-600 dark:text-zen-400 max-w-2xl mx-auto">
+          <p className="text-zen-600 dark:text-zen-400 mx-auto max-w-2xl text-lg">
             Tools and technologies I use to bring ideas to life
           </p>
         </motion.div>
@@ -56,19 +56,19 @@ export default function SkillsCloud() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+          className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4"
         >
           {skills.map((skill) => (
             <motion.div
               key={skill.name}
               variants={item}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="glass glass-border rounded-2xl p-6 text-center hover:shadow-xl transition-shadow duration-300 cursor-default"
+              className="glass glass-border cursor-default rounded-2xl p-6 text-center transition-shadow duration-300 hover:shadow-xl"
             >
-              <h3 className="font-semibold text-zen-900 dark:text-zen-100 mb-1">
+              <h3 className="text-zen-900 dark:text-zen-100 mb-1 font-semibold">
                 {skill.name}
               </h3>
-              <p className="text-xs text-zen-500 dark:text-zen-500">
+              <p className="text-zen-500 dark:text-zen-500 text-xs">
                 {skill.category}
               </p>
             </motion.div>

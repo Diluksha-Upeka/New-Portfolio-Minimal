@@ -18,8 +18,8 @@ export interface GitHubRepo {
   pushed_at: string;
 }
 
-const GITHUB_USERNAME = 'Diluksha-Upeka'; // Replace with your GitHub username
-const GITHUB_API = 'https://api.github.com';
+const GITHUB_USERNAME = "Diluksha-Upeka"; // Replace with your GitHub username
+const GITHUB_API = "https://api.github.com";
 
 /**
  * Fetches repositories from GitHub API
@@ -36,7 +36,7 @@ export async function getGitHubRepos(
       `${GITHUB_API}/users/${username}/repos?sort=updated&per_page=${limit}`,
       {
         headers: {
-          Accept: 'application/vnd.github.v3+json',
+          Accept: "application/vnd.github.v3+json",
         },
         next: {
           revalidate: 3600, // Cache for 1 hour
@@ -55,7 +55,7 @@ export async function getGitHubRepos(
       .filter((repo) => !repo.fork && repo.description)
       .slice(0, limit);
   } catch (error) {
-    console.error('Error fetching GitHub repos:', error);
+    console.error("Error fetching GitHub repos:", error);
     return [];
   }
 }
@@ -72,7 +72,7 @@ export async function getGitHubRepo(
       `${GITHUB_API}/repos/${username}/${repoName}`,
       {
         headers: {
-          Accept: 'application/vnd.github.v3+json',
+          Accept: "application/vnd.github.v3+json",
         },
         next: {
           revalidate: 3600,
@@ -86,7 +86,7 @@ export async function getGitHubRepo(
 
     return await response.json();
   } catch (error) {
-    console.error('Error fetching GitHub repo:', error);
+    console.error("Error fetching GitHub repo:", error);
     return null;
   }
 }
@@ -98,7 +98,7 @@ export async function getGitHubUser(username: string = GITHUB_USERNAME) {
   try {
     const response = await fetch(`${GITHUB_API}/users/${username}`, {
       headers: {
-        Accept: 'application/vnd.github.v3+json',
+        Accept: "application/vnd.github.v3+json",
       },
       next: {
         revalidate: 3600,
@@ -111,7 +111,7 @@ export async function getGitHubUser(username: string = GITHUB_USERNAME) {
 
     return await response.json();
   } catch (error) {
-    console.error('Error fetching GitHub user:', error);
+    console.error("Error fetching GitHub user:", error);
     return null;
   }
 }

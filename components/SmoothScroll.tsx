@@ -24,7 +24,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-    
+
     requestAnimationFrame(raf);
 
     return () => {
@@ -34,7 +34,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
 
   // Reset scroll on route change if needed (Next.js sometimes handles this, but Lenis might need help)
   useEffect(() => {
-     // Optional: window.scrollTo(0, 0); 
+    // Optional: window.scrollTo(0, 0);
   }, [pathname]);
 
   return <>{children}</>;

@@ -45,16 +45,16 @@ export default function ContactForm() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3, duration: 0.6 }}
-      className="glass glass-border rounded-3xl p-8 md:p-12 max-w-2xl mx-auto"
+      className="glass glass-border mx-auto max-w-2xl rounded-3xl p-8 md:p-12"
     >
       {isSubmitted ? (
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="text-center py-12"
+          className="py-12 text-center"
         >
-          <CheckCircle className="w-16 h-16 mx-auto mb-4 text-green-500" />
-          <h3 className="text-2xl font-bold mb-2 text-zen-900 dark:text-zen-50">
+          <CheckCircle className="mx-auto mb-4 h-16 w-16 text-green-500" />
+          <h3 className="text-zen-900 dark:text-zen-50 mb-2 text-2xl font-bold">
             Message Sent!
           </h3>
           <p className="text-zen-600 dark:text-zen-400">
@@ -67,7 +67,7 @@ export default function ContactForm() {
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-medium mb-2 text-zen-700 dark:text-zen-300"
+              className="text-zen-700 dark:text-zen-300 mb-2 block text-sm font-medium"
             >
               Name
             </label>
@@ -78,7 +78,7 @@ export default function ContactForm() {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 rounded-xl glass glass-border focus:outline-none focus:ring-2 focus:ring-zen-400 transition-all text-zen-900 dark:text-zen-50"
+              className="glass glass-border focus:ring-zen-400 text-zen-900 dark:text-zen-50 w-full rounded-xl px-4 py-3 transition-all focus:outline-none focus:ring-2"
               placeholder="Your name"
             />
           </div>
@@ -87,7 +87,7 @@ export default function ContactForm() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium mb-2 text-zen-700 dark:text-zen-300"
+              className="text-zen-700 dark:text-zen-300 mb-2 block text-sm font-medium"
             >
               Email
             </label>
@@ -98,7 +98,7 @@ export default function ContactForm() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 rounded-xl glass glass-border focus:outline-none focus:ring-2 focus:ring-zen-400 transition-all text-zen-900 dark:text-zen-50"
+              className="glass glass-border focus:ring-zen-400 text-zen-900 dark:text-zen-50 w-full rounded-xl px-4 py-3 transition-all focus:outline-none focus:ring-2"
               placeholder="your.email@example.com"
             />
           </div>
@@ -107,7 +107,7 @@ export default function ContactForm() {
           <div>
             <label
               htmlFor="message"
-              className="block text-sm font-medium mb-2 text-zen-700 dark:text-zen-300"
+              className="text-zen-700 dark:text-zen-300 mb-2 block text-sm font-medium"
             >
               Message
             </label>
@@ -118,7 +118,7 @@ export default function ContactForm() {
               onChange={handleChange}
               required
               rows={6}
-              className="w-full px-4 py-3 rounded-xl glass glass-border focus:outline-none focus:ring-2 focus:ring-zen-400 transition-all resize-none text-zen-900 dark:text-zen-50"
+              className="glass glass-border focus:ring-zen-400 text-zen-900 dark:text-zen-50 w-full resize-none rounded-xl px-4 py-3 transition-all focus:outline-none focus:ring-2"
               placeholder="Your message..."
             />
           </div>
@@ -129,11 +129,11 @@ export default function ContactForm() {
             disabled={isLoading}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full px-8 py-4 bg-zen-900 dark:bg-zen-100 text-white dark:text-zen-900 rounded-xl font-medium hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-zen-900 dark:bg-zen-100 dark:text-zen-900 flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-medium text-white transition-all duration-300 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isLoading ? (
               <>
-                <div className="w-5 h-5 border-2 border-white dark:border-zen-900 border-t-transparent rounded-full animate-spin" />
+                <div className="dark:border-zen-900 h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
                 Sending...
               </>
             ) : (

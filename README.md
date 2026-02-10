@@ -1,4 +1,3 @@
-
 # Portfolio
 
 A personal portfolio built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
@@ -22,14 +21,14 @@ It includes a curated Featured Projects section with a smooth **morphing modal**
 
 - **UI**: clean typography, subtle borders, light surfaces.
 - **Featured Projects modal**:
-	- Click a project card → elegant modal opens.
-	- Screenshot displayed with **original aspect ratio** (no distortion).
-	- Minimal content layout so most screens view everything “in one go”.
+  - Click a project card → elegant modal opens.
+  - Screenshot displayed with **original aspect ratio** (no distortion).
+  - Minimal content layout so most screens view everything “in one go”.
 - **Scroll position indicator**:
-	- Minimal vertical dots on the right.
-	- Highlights the active section (Home / Skills / Work / Projects).
-	- Clickable for smooth scrolling.
-	- Responsive: on mobile you get dots only; labels appear from `md` and up.
+  - Minimal vertical dots on the right.
+  - Highlights the active section (Home / Skills / Work / Projects).
+  - Clickable for smooth scrolling.
+  - Responsive: on mobile you get dots only; labels appear from `md` and up.
 - **Static + fast**: optimized for production build.
 
 ---
@@ -99,12 +98,12 @@ The Featured Projects modal reads images from `public/projects/`.
 
 1. Put your images in:
 
-	 `public/projects/`
+   `public/projects/`
 
 2. Ensure the `image` field points to the right path, for example:
 
 ```ts
-image: "/projects/ev.png"
+image: "/projects/ev.png";
 ```
 
 If an image is missing, the modal shows a subtle placeholder instead.
@@ -115,10 +114,10 @@ The right-side scroll indicator tracks the sections listed in `components/Scroll
 
 ```ts
 const sections = [
-	{ id: "home", label: "Start" },
-	{ id: "tech", label: "Skills" },
-	{ id: "work", label: "Work" },
-	{ id: "projects", label: "Projects" },
+  { id: "home", label: "Start" },
+  { id: "tech", label: "Skills" },
+  { id: "work", label: "Work" },
+  { id: "projects", label: "Projects" },
 ];
 ```
 
@@ -164,4 +163,3 @@ Typical Vercel flow:
 4. Output: handled automatically for Next.js
 
 ---
-

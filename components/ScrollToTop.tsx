@@ -35,10 +35,13 @@ export default function ScrollToTop() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 p-3 rounded-full bg-zen-bg border border-zen-surface shadow-md text-zen-subtext hover:text-zen-text hover:border-zen-subtext transition-all z-50 group"
+          className="group fixed bottom-8 right-8 z-50 rounded-full border border-zen-surface bg-zen-bg p-3 text-zen-subtext shadow-md transition-all hover:border-zen-subtext hover:text-zen-text"
           aria-label="Scroll to top"
         >
-          <ArrowUp size={20} className="group-hover:-translate-y-0.5 transition-transform" />
+          <ArrowUp
+            size={20}
+            className="transition-transform group-hover:-translate-y-0.5"
+          />
         </motion.button>
       )}
     </AnimatePresence>

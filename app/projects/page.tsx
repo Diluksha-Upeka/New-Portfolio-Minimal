@@ -5,30 +5,31 @@ export default async function ProjectsPage() {
   const projects = await getGitHubRepos();
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen px-4 pb-16 pt-24 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-zen-900 dark:text-zen-50">
+        <div className="mb-16 text-center">
+          <h1 className="text-zen-900 dark:text-zen-50 mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
             Featured Projects
           </h1>
-          <p className="text-lg md:text-xl text-zen-600 dark:text-zen-400 max-w-2xl mx-auto">
-            A curated selection of my recent work. Each project represents a unique challenge and learning experience.
+          <p className="text-zen-600 dark:text-zen-400 mx-auto max-w-2xl text-lg md:text-xl">
+            A curated selection of my recent work. Each project represents a
+            unique challenge and learning experience.
           </p>
         </div>
 
         {/* Projects Grid */}
         {projects.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-16">
+          <div className="py-16 text-center">
             <p className="text-zen-600 dark:text-zen-400 text-lg">
               No projects found. Update your GitHub username in{" "}
-              <code className="px-2 py-1 bg-zen-100 dark:bg-zen-800 rounded">
+              <code className="bg-zen-100 dark:bg-zen-800 rounded px-2 py-1">
                 lib/github.ts
               </code>
             </p>
@@ -36,18 +37,18 @@ export default async function ProjectsPage() {
         )}
 
         {/* View More on GitHub */}
-        <div className="text-center mt-16">
+        <div className="mt-16 text-center">
           <a
             href="https://github.com/Diluksha-Upeka"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 glass glass-border rounded-full font-medium hover:scale-105 transition-transform duration-300"
+            className="glass glass-border inline-flex items-center gap-2 rounded-full px-8 py-4 font-medium transition-transform duration-300 hover:scale-105"
           >
             View More on GitHub
             <svg
-              className="w-5 h-5"
+              className="h-5 w-5"
               fill="none"
-              stroke="currentColor" 
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
               <path
