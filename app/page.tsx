@@ -33,16 +33,16 @@ export default async function Home() {
                 </span>
               </h1>
               <p className="text-xl font-medium text-zen-text md:text-2xl">
-                Software Engineer | AI/ML
+                Software Engineer • AI/ML
               </p>
             </div>
             <div className="flex-shrink-0">
-              <div className="relative h-40 w-40 overflow-hidden rounded-full border-2 border-zen-surface shadow-sm md:h-56 md:w-56">
+              <div className="group relative h-40 w-40 overflow-hidden rounded-full border-2 border-zen-surface shadow-sm md:h-56 md:w-56">
                 <Image
                   src="/profile.png"
                   alt="Profile Photo"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                   priority
                 />
               </div>
