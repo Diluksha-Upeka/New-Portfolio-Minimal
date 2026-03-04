@@ -33,7 +33,7 @@ export default async function Home() {
                 </span>
               </h1>
               <p className="text-xl font-medium text-zen-text md:text-2xl">
-                Software Engineer • AI/ML
+                Software Engineer • AI/ML • Agentic AI • RAG
               </p>
             </div>
             <div className="flex-shrink-0">
