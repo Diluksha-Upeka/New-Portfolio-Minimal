@@ -16,6 +16,16 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "Neurospace",
+    description:
+      "Built an AI-powered GraphRAG application enabling intelligent document ingestion, media transcription, and interactive knowledge graph visualization. Implemented a chat interface for contextual queries.",
+    learning:
+      "Designed Graph retrieval-augmented pipelines and orchestrated data processing workflows using multiple AI models.",
+    tech: ["Next.js", "FastAPI", "Neo4j", "LlamaIndex"],
+    link: "https://github.com/Diluksha-Upeka/Neurospace",
+    image: "/projects/neurospace.png",
+  },
+  {
     name: "End-to-End MLOps Pipeline & Deployment",
     description:
       "Architected a full-stack Machine Learning application with a CI/CD pipeline, Docker containerization, and production deployment on Render Cloud, moving beyond static notebooks.",
