@@ -6,6 +6,25 @@
   :root {
     --background: #fafaf9;
     --foreground: #44403c;
+    /* Zen Theme Colors */
+    --zen-bg: #fafaf9; /* Stone 50 */
+    --zen-paper: #f5f5f4; /* Stone 100 */
+    --zen-surface: #e7e5e4; /* Stone 200 */
+    --zen-text: #44403c; /* Stone 700 */
+    --zen-subtext: #78716c; /* Stone 500 */
+    --zen-accent: #57534e; /* Stone 600 */
+  }
+
+  .dark {
+    --background: #09090b;
+    --foreground: #fafafa;
+    /* Zen Dark Theme Colors */
+    --zen-bg: #0c0a09; /* stone-950/custom very dark */
+    --zen-paper: #161412; /* slightly lighter than bg */
+    --zen-surface: #292524; /* stone-800 */
+    --zen-text: #e7e5e4; /* stone-200 */
+    --zen-subtext: #a8a29e; /* stone-400 */
+    --zen-accent: #d6d3d1; /* stone-300 */
   }
 
   body {

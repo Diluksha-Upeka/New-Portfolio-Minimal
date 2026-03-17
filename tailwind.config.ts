@@ -15,12 +15,12 @@ const config: Config = {
       },
       colors: {
         zen: {
-          bg: "#FAFAF9", // Stone 50
-          paper: "#F5F5F4", // Stone 100
-          surface: "#E7E5E4", // Stone 200
-          text: "#44403C", // Stone 700
-          subtext: "#78716C", // Stone 500
-          accent: "#57534E", // Stone 600
+          bg: "var(--zen-bg)",
+          paper: "var(--zen-paper)",
+          surface: "var(--zen-surface)",
+          text: "var(--zen-text)",
+          subtext: "var(--zen-subtext)",
+          accent: "var(--zen-accent)",
         },
       },
       animation: {
