@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Code2, Briefcase, FolderGit2, Mail } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
   { name: "Tech", href: "/#tech", icon: Code2 },
@@ -59,13 +60,16 @@ export default function Navbar() {
             : "scale-100 border-transparent bg-white/80 backdrop-blur-md dark:bg-stone-900/80"
         }`}
       >
-        <Link
-          href="/"
-          className="mr-4 font-heading text-xl font-bold tracking-tighter text-zen-text transition-opacity hover:opacity-70"
-          onClick={() => setActiveSection("")}
-        >
-          UD.
-        </Link>
+        <div className="mr-4 flex items-center gap-4">
+          <Link
+            href="/"
+            className="font-heading text-xl font-bold tracking-tighter text-zen-text transition-opacity hover:opacity-70"
+            onClick={() => setActiveSection("")}
+          >
+            UD.
+          </Link>
+          <ThemeToggle />
+        </div>
 
         <div className="flex gap-1 sm:gap-2">
           {navItems.map((item) => {
