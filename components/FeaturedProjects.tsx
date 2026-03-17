@@ -87,7 +87,7 @@ export default function FeaturedProjects() {
             layoutId={`card-${project.name}`}
             key={project.name}
             onClick={() => setSelectedProject(project)}
-            className="group relative cursor-pointer overflow-hidden rounded-2xl border border-zen-surface bg-white p-6 shadow-sm transition-all duration-300 hover:border-zen-subtext/30 hover:shadow-md md:p-8"
+            className="hover:border-zen-subtext/30 group relative cursor-pointer overflow-hidden rounded-2xl border border-zen-surface bg-zen-paper p-6 shadow-sm transition-all duration-300 hover:shadow-md md:p-8"
           >
             <div className="mb-4 flex flex-col items-start justify-between gap-2 md:flex-row md:items-center">
               <motion.h3
@@ -138,24 +138,24 @@ export default function FeaturedProjects() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProject(null)}
-              className="absolute inset-0 bg-stone-100/60 backdrop-blur-md"
+              className="absolute inset-0 bg-stone-100/60 backdrop-blur-md dark:bg-black/60"
             />
             <motion.div
               layoutId={`card-${selectedProject.name}`}
-              className="relative z-10 flex max-h-[85vh] w-full max-w-2xl flex-col rounded-2xl border border-white/50 bg-[#FAFAF9] shadow-2xl shadow-stone-200"
+              className="border-zen-surface/50 relative z-10 flex max-h-[85vh] w-full max-w-2xl flex-col rounded-2xl border bg-zen-bg shadow-2xl shadow-stone-200 dark:shadow-black"
             >
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   setSelectedProject(null);
                 }}
-                className="absolute right-4 top-4 z-20 rounded-full bg-white/50 p-1.5 text-zen-text backdrop-blur-md transition-colors duration-200 hover:scale-110 hover:bg-white"
+                className="bg-zen-surface/50 absolute right-4 top-4 z-20 rounded-full p-1.5 text-zen-text backdrop-blur-md transition-colors duration-200 hover:scale-110 hover:bg-zen-paper"
               >
                 <X size={20} />
               </button>
 
               {/* Image Section - Top */}
-              <div className="relative flex h-48 shrink-0 items-center justify-center overflow-hidden rounded-t-2xl border-b border-zen-surface/50 bg-stone-100 sm:h-56">
+              <div className="border-zen-surface/50 relative flex h-48 shrink-0 items-center justify-center overflow-hidden rounded-t-2xl border-b bg-zen-surface sm:h-56">
                 {selectedProject.image ? (
                   <>
                     <Image
@@ -189,7 +189,7 @@ export default function FeaturedProjects() {
                     {selectedProject.tech.map((t) => (
                       <span
                         key={t}
-                        className="rounded-full border border-zen-subtext/20 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-zen-subtext"
+                        className="border-zen-subtext/20 rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-zen-subtext"
                       >
                         {t}
                       </span>
@@ -197,7 +197,7 @@ export default function FeaturedProjects() {
                   </div>
                 </motion.div>
 
-                <div className="space-y-4 text-sm text-zen-text/90">
+                <div className="text-zen-text/90 space-y-4 text-sm">
                   <motion.p
                     layoutId={`desc-${selectedProject.name}`}
                     className="leading-relaxed"
@@ -205,11 +205,11 @@ export default function FeaturedProjects() {
                     {selectedProject.description}
                   </motion.p>
 
-                  <div className="rounded-lg border border-zen-surface/50 bg-zen-paper/50 p-3">
+                  <div className="border-zen-surface/50 bg-zen-paper/50 rounded-lg border p-3">
                     <p className="mb-1 text-xs font-bold uppercase tracking-widest text-zen-subtext">
                       Key Insight
                     </p>
-                    <p className="font-medium italic text-zen-text/80">
+                    <p className="text-zen-text/80 font-medium italic">
                       &quot;{selectedProject.learning}&quot;
                     </p>
                   </div>
