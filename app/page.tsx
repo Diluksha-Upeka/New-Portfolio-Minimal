@@ -116,15 +116,15 @@ export default async function Home() {
               </h4>
               <ul className="space-y-3 text-sm font-medium text-zen-text">
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 text-zen-subtext/60">•</span>
+                  <span className="text-zen-subtext/60 mt-1">•</span>
                   <span>Model training, evaluation & persistence</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 text-zen-subtext/60">•</span>
+                  <span className="text-zen-subtext/60 mt-1">•</span>
                   <span>Pipelines (scikit-learn, custom preprocessing)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 text-zen-subtext/60">•</span>
+                  <span className="text-zen-subtext/60 mt-1">•</span>
                   <span>Computer Vision (OpenCV, real-time inference)</span>
                 </li>
                 <li className="flex flex-wrap gap-2 pt-2 opacity-75">
@@ -147,15 +147,15 @@ export default async function Home() {
               </h4>
               <ul className="space-y-3 text-sm font-medium text-zen-text">
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 text-zen-subtext/60">•</span>
+                  <span className="text-zen-subtext/60 mt-1">•</span>
                   <span>REST & real-time APIs (Node.js, Socket.io)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 text-zen-subtext/60">•</span>
+                  <span className="text-zen-subtext/60 mt-1">•</span>
                   <span>Frontend systems (React, Next.js, React Native)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 text-zen-subtext/60">•</span>
+                  <span className="text-zen-subtext/60 mt-1">•</span>
                   <span>Authentication, state management, scalability</span>
                 </li>
                 <li className="flex flex-wrap gap-2 pt-2 opacity-75">
@@ -178,15 +178,15 @@ export default async function Home() {
               </h4>
               <ul className="space-y-3 text-sm font-medium text-zen-text">
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 text-zen-subtext/60">•</span>
+                  <span className="text-zen-subtext/60 mt-1">•</span>
                   <span>Dockerized services & containers</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 text-zen-subtext/60">•</span>
+                  <span className="text-zen-subtext/60 mt-1">•</span>
                   <span>AWS deployment basics</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 text-zen-subtext/60">•</span>
+                  <span className="text-zen-subtext/60 mt-1">•</span>
                   <span>Git-based collaboration & CI mindset</span>
                 </li>
                 <li className="flex flex-wrap gap-2 pt-2 opacity-75">
@@ -213,7 +213,7 @@ export default async function Home() {
 
           <div className="space-y-8">
             {/* Capricon Entry */}
-            <div className="group rounded-2xl border border-zen-surface bg-white p-6 shadow-sm transition-all duration-300 hover:border-zen-subtext/30 hover:shadow-md md:p-8">
+            <div className="hover:border-zen-subtext/30 group rounded-2xl border border-zen-surface bg-zen-paper p-6 shadow-sm transition-all duration-300 hover:shadow-md md:p-8">
               <div className="mb-4 flex flex-col items-start justify-between gap-2 md:flex-row md:items-center">
                 <div>
                   <h3 className="font-heading text-xl font-bold text-zen-text">
@@ -245,20 +245,20 @@ export default async function Home() {
                 </p>
 
                 <div className="grid grid-cols-1 gap-4 pt-2 md:grid-cols-2">
-                  <div className="rounded-lg border border-zen-surface/50 bg-zen-paper/50 p-3">
+                  <div className="border-zen-surface/50 bg-zen-paper/50 rounded-lg border p-3">
                     <p className="mb-1 text-xs font-bold uppercase tracking-wider text-zen-subtext">
                       Business Logic
                     </p>
-                    <p className="text-sm font-medium text-zen-text text-zen-text/90">
+                    <p className="text-zen-text/90 text-sm font-medium text-zen-text">
                       Translated complex business requirements into clean,
                       maintainable code within the MVC architecture.
                     </p>
                   </div>
-                  <div className="rounded-lg border border-zen-surface/50 bg-zen-paper/50 p-3">
+                  <div className="border-zen-surface/50 bg-zen-paper/50 rounded-lg border p-3">
                     <p className="mb-1 text-xs font-bold uppercase tracking-wider text-zen-subtext">
                       Database Design
                     </p>
-                    <p className="text-sm font-medium text-zen-text text-zen-text/90">
+                    <p className="text-zen-text/90 text-sm font-medium text-zen-text">
                       Managed relational databases (MySQL) for high-transaction
                       environments (sales/inventory data).
                     </p>
@@ -293,7 +293,7 @@ export default async function Home() {
                 <a
                   href="https://github.com/Diluksha-Upeka/learning-journal"
                   target="_blank"
-                  className="group -mx-4 flex flex-col justify-between rounded-lg border-b border-zen-surface/50 px-4 py-4 transition-colors hover:bg-zen-paper/30 md:flex-row md:items-center"
+                  className="border-zen-surface/50 hover:bg-zen-paper/30 group -mx-4 flex flex-col justify-between rounded-lg border-b px-4 py-4 transition-colors md:flex-row md:items-center"
                 >
                   <div>
                     <h4 className="flex items-center gap-2 font-bold text-zen-text transition-colors group-hover:text-zen-accent">
@@ -317,7 +317,7 @@ export default async function Home() {
                 <a
                   href="https://github.com/Diluksha-Upeka/AI-Journal.git"
                   target="_blank"
-                  className="group -mx-4 flex flex-col justify-between rounded-lg border-b border-zen-surface/50 px-4 py-4 transition-colors hover:bg-zen-paper/30 md:flex-row md:items-center"
+                  className="border-zen-surface/50 hover:bg-zen-paper/30 group -mx-4 flex flex-col justify-between rounded-lg border-b px-4 py-4 transition-colors md:flex-row md:items-center"
                 >
                   <div>
                     <h4 className="flex items-center gap-2 font-bold text-zen-text transition-colors group-hover:text-zen-accent">
@@ -340,7 +340,7 @@ export default async function Home() {
             </div>
 
             {/* Current Focus */}
-            <section className="rounded-2xl border border-zen-surface bg-zen-paper/50 p-8 md:p-10">
+            <section className="bg-zen-paper/50 rounded-2xl border border-zen-surface p-8 md:p-10">
               <h3 className="mb-6 font-heading text-xl font-bold text-zen-text">
                 Current Focus
               </h3>
@@ -350,7 +350,7 @@ export default async function Home() {
                   <p className="text-xs font-bold uppercase tracking-widest text-zen-subtext">
                     Building
                   </p>
-                  <p className="text-sm leading-relaxed text-zen-text/90">
+                  <p className="text-zen-text/90 text-sm leading-relaxed">
                     Production-grade AI apps with clean APIs, observability, and
                     predictable outputs.
                   </p>
@@ -359,7 +359,7 @@ export default async function Home() {
                   <p className="text-xs font-bold uppercase tracking-widest text-zen-subtext">
                     Learning
                   </p>
-                  <p className="text-sm leading-relaxed text-zen-text/90">
+                  <p className="text-zen-text/90 text-sm leading-relaxed">
                     LLM system prompts, structured JSON extraction, and
                     evaluation for reliability.
                   </p>
@@ -368,7 +368,7 @@ export default async function Home() {
                   <p className="text-xs font-bold uppercase tracking-widest text-zen-subtext">
                     Open To
                   </p>
-                  <p className="text-sm leading-relaxed text-zen-text/90">
+                  <p className="text-zen-text/90 text-sm leading-relaxed">
                     AI/ML engineering, backend systems, and impactful product
                     collaborations.
                   </p>
