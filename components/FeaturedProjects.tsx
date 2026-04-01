@@ -4,77 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, X } from "lucide-react";
-
-interface Project {
-  name: string;
-  description: string;
-  learning: string;
-  tech: string[];
-  link: string;
-  image?: string;
-}
-
-const projects: Project[] = [
-  {
-    name: "Neurospace",
-    description:
-      "Built an AI-powered GraphRAG application enabling intelligent document ingestion, media transcription, and interactive knowledge graph visualization. Implemented a chat interface for contextual queries.",
-    learning:
-      "Designed Graph retrieval-augmented pipelines and orchestrated data processing workflows using multiple AI models.",
-    tech: ["Next.js", "FastAPI", "Neo4j", "LlamaIndex"],
-    link: "https://github.com/Diluksha-Upeka/Neurospace",
-    image: "/projects/neurospace.png",
-  },
-  {
-    name: "End-to-End MLOps Pipeline & Deployment",
-    description:
-      "Architected a full-stack Machine Learning application with a CI/CD pipeline, Docker containerization, and production deployment on Render Cloud, moving beyond static notebooks.",
-    learning:
-      "Implemented Containerization (Docker), Automation (GitHub Actions), and Deployment for a production-ready ML workflow.",
-    tech: ["Python", "Flask", "Docker", "Render", "GitHub Actions"],
-    link: "https://salary-prediction-mlops.onrender.com/",
-    image: "/projects/mlops.png",
-  },
-  {
-    name: "Resume Optimizer",
-    description:
-      "A Streamlit dashboard that parses resumes into JSON and gives an ATS score using Llama 3.",
-    learning: "Structured Output (JSON) and system prompts.",
-    tech: ["Python", "Streamlit", "LangChain", "Llama 3"],
-    link: "https://ai-resume-diluksha.streamlit.app/",
-    image: "/projects/resume.png",
-  },
-  {
-    name: "EV Charging Station Management Platform",
-    description:
-      "Built a full-stack system enabling real-time charger availability, booking, and route-aware station selection. Implemented live updates using WebSockets and designed the backend.",
-    learning:
-      "Designed real-time systems and managed state consistency across clients.",
-    tech: ["React", "Express", "MongoDB", "Node.js"],
-    link: "https://electric-vehicle-booking-system.vercel.app/",
-    image: "/projects/ev.png",
-  },
-  {
-    name: "LiveTalk – Secure Real-Time Communication",
-    description:
-      "Designed a multi-user chat system with message flows, and communication using Socket.io.",
-    learning:
-      "Explored real-time scalability, message synchronization, and user presence management.",
-    tech: ["React", "Socket.io"],
-    link: "https://live-talk.onrender.com/",
-    image: "/projects/chat.png",
-  },
-  {
-    name: "ContextIQ: RAG Document Assistant",
-    description:
-      "Built a production-ready Retrieval-Augmented Generation (RAG) application enabling semantic search and Q&A over PDF documents. Integrated Google Gemini for high-dimensional embeddings and generation, with Pinecone managing vector storage.",
-    learning:
-      "Implemented modern RAG architecture using LangChain, mastered handling vector embeddings (3072-dim), and solved production integration challenges like dynamic dimension resizing and namespace management.",
-    tech: ["Python", "Streamlit", "Google Gemini", "Pinecone", "LangChain"],
-    link: "https://github.com/Diluksha-Upeka/contextiq-rag",
-    image: "/projects/contextiq.png",
-  },
-];
+import { FEATURED_PROJECTS, type Project } from "@/lib/data";
 
 export default function FeaturedProjects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -82,7 +12,7 @@ export default function FeaturedProjects() {
   return (
     <>
       <div className="grid grid-cols-1 gap-8">
-        {projects.map((project) => (
+        {FEATURED_PROJECTS.map((project) => (
           <motion.div
             layoutId={`card-${project.name}`}
             key={project.name}
