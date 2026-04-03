@@ -1,9 +1,18 @@
+export type ProjectCategory =
+  | "ai-ml"
+  | "full-stack"
+  | "real-time"
+  | "mlops-infra";
+
 export interface Project {
   name: string;
   description: string;
   learning: string;
   tech: string[];
-  link: string;
+  category: ProjectCategory;
+  logo: string;
+  githubUrl?: string;
+  liveUrl?: string;
   image?: string;
 }
 
@@ -97,63 +106,91 @@ export const WORK_EXPERIENCE = [
 
 export const FEATURED_PROJECTS: Project[] = [
   {
-    name: "Neurospace",
+    name: "NeuroSpace",
     description:
-      "Built an AI-powered GraphRAG application enabling intelligent document ingestion, media transcription, and interactive knowledge graph visualization. Implemented a chat interface for contextual queries.",
+      "A multi-modal GraphRAG agent that converts video lectures and research papers into a navigable knowledge graph with agentic retrieval and cross-modal navigation.",
     learning:
-      "Designed Graph retrieval-augmented pipelines and orchestrated data processing workflows using multiple AI models.",
-    tech: ["Next.js", "FastAPI", "Neo4j", "LlamaIndex"],
-    link: "https://github.com/Diluksha-Upeka/Neurospace",
-    image: "/projects/neurospace.png",
+      "Designed cross-modal GraphRAG pipelines with multi-source ingestion and retrieval orchestration.",
+    tech: ["LlamaIndex", "Neo4j", "React Flow", "FastAPI", "Docker"],
+    category: "ai-ml",
+    logo: "NS",
+    githubUrl: "https://github.com/Diluksha-Upeka/Neurospace",
   },
   {
-    name: "End-to-End MLOps Pipeline & Deployment",
+    name: "ContextIQ (RAG System)",
     description:
-      "Architected a full-stack Machine Learning application with a CI/CD pipeline, Docker containerization, and production deployment on Render Cloud. A real-time salary prediction engine processing bulk requests rapidly.",
+      "Chat with your latest PDF using Gemini plus Pinecone RAG. Upload, chunk, embed, retrieve, and answer with grounded context.",
     learning:
-      "Implemented Containerization (Docker), Automation (GitHub Actions), and Deployment for a production-ready ML workflow.",
-    tech: ["Python", "Flask", "Docker", "Render", "GitHub Actions"],
-    link: "https://salary-prediction-mlops.onrender.com/",
+      "Implemented reliable RAG flow with robust document chunking and grounded response generation.",
+    tech: ["Python", "Streamlit", "Gemini", "Pinecone", "LangChain"],
+    category: "ai-ml",
+    logo: "CQ",
+    githubUrl: "https://github.com/Diluksha-Upeka/contextiq-rag",
+    liveUrl: "https://contextiq-rag.vercel.app/",
+    image: "/projects/contextiq.png",
+  },
+  {
+    name: "AI Data Analyst",
+    description:
+      "Intelligent CSV analysis tool powered by Groq and LangChain agents. Upload data and interact using natural language queries.",
+    learning:
+      "Built agent-powered tabular analysis workflows for natural language data interrogation.",
+    tech: ["Python", "Streamlit", "LangChain", "Groq", "Pandas"],
+    category: "ai-ml",
+    logo: "AD",
+    githubUrl: "https://github.com/Diluksha-Upeka/ai-analyst",
+    liveUrl: "https://ai-data-chat.streamlit.app/",
+  },
+  {
+    name: "Salary Estimator (MLOps Pipeline)",
+    description:
+      "End-to-end ML system with CI/CD, Docker containerization, automated testing, and production deployment.",
+    learning:
+      "Implemented production MLOps flow with repeatable deployment, testing, and automation.",
+    tech: ["Python", "Flask", "Docker", "GitHub Actions", "Render"],
+    category: "mlops-infra",
+    logo: "SE",
+    githubUrl: "https://github.com/Diluksha-Upeka/salary-prediction-mlops",
+    liveUrl: "https://salary-prediction-mlops.onrender.com/",
     image: "/projects/mlops.png",
   },
   {
-    name: "Resume Optimizer",
+    name: "EV Charging Booking System",
     description:
-      "A Streamlit dashboard that parses resumes into JSON and gives an ATS score using Llama 3.",
-    learning: "Structured Output (JSON) and system prompts.",
-    tech: ["Python", "Streamlit", "LangChain", "Llama 3"],
-    link: "https://ai-resume-diluksha.streamlit.app/",
-    image: "/projects/resume.png",
-  },
-  {
-    name: "EV Charging Station Management Platform",
-    description:
-      "Built a full-stack system enabling real-time charger availability, booking, and route-aware station selection. Implemented live updates using WebSockets and designed the backend.",
+      "Real-time EV charging booking and tracking system featuring route optimization and live station monitoring.",
     learning:
-      "Designed real-time systems and managed state consistency across clients.",
-    tech: ["React", "Express", "MongoDB", "Node.js"],
-    link: "https://electric-vehicle-booking-system.vercel.app/",
+      "Designed booking and tracking flows with real-time state updates for mobile-first usage.",
+    tech: ["React Native", "Node.js", "Socket.io"],
+    category: "full-stack",
+    logo: "EV",
+    githubUrl:
+      "https://github.com/Diluksha-Upeka/Electric-Vehicle-Booking-System",
+    liveUrl: "https://electric-vehicle-booking-system.vercel.app/",
     image: "/projects/ev.png",
   },
   {
-    name: "LiveTalk \u2013 Secure Real-Time Communication",
+    name: "Live Talk (Encrypted Chat App)",
     description:
-      "Designed a multi-user chat system with message flows, and communication using Socket.io.",
+      "End-to-end encrypted real-time communication platform with secure file transfer and multi-user channels.",
     learning:
-      "Explored real-time scalability, message synchronization, and user presence management.",
-    tech: ["React", "Socket.io"],
-    link: "https://live-talk.onrender.com/",
+      "Implemented secure real-time communication patterns and channel-based collaboration flows.",
+    tech: ["React", "Redis", "Socket.io"],
+    category: "real-time",
+    logo: "LT",
+    githubUrl: "https://github.com/Diluksha-Upeka/Real-time-Chat-App",
+    liveUrl: "https://live-talk.onrender.com/",
     image: "/projects/chat.png",
   },
   {
-    name: "ContextIQ: RAG Document Assistant",
+    name: "Voxis",
     description:
-      "Built a production-ready Retrieval-Augmented Generation (RAG) application enabling semantic search and Q&A over PDF documents. Integrated Google Gemini for high-dimensional embeddings and generation, with Pinecone managing vector storage.",
+      "A voice assistant named Jarvis that records audio, transcribes speech using Whisper, and generates conversational responses with Llama AI.",
     learning:
-      "Implemented modern RAG architecture using LangChain, mastered handling vector embeddings (3072-dim), and solved production integration challenges like dynamic dimension resizing and namespace management.",
-    tech: ["Python", "Streamlit", "Google Gemini", "Pinecone", "LangChain"],
-    link: "https://github.com/Diluksha-Upeka/contextiq-rag",
-    image: "/projects/contextiq.png",
+      "Built speech-to-text and response generation flow for a practical voice-driven assistant.",
+    tech: ["Python", "Groq", "Whisper", "sounddevice", "NumPy", "SciPy"],
+    category: "ai-ml",
+    logo: "VX",
+    githubUrl: "https://github.com/Diluksha-Upeka/Voxis",
   },
 ];
 
