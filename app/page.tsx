@@ -9,6 +9,16 @@ import {
 import Image from "next/image";
 import ScrollProgress from "@/components/ScrollProgress";
 import FeaturedProjects from "@/components/FeaturedProjects";
+import VideoCarousel from "@/components/VideoCarousel";
+import {
+  HERO_DATA,
+  PROOF_BAR_DATA,
+  SHOWCASE_VIDEOS,
+  TECH_ARSENAL,
+  WORK_EXPERIENCE,
+  JOURNAL_PROJECTS,
+  CURRENT_FOCUS,
+} from "@/lib/data";
 
 export const revalidate = 3600;
 
@@ -22,24 +32,23 @@ export default async function Home() {
           <div className="flex flex-col-reverse items-center justify-between gap-8 md:flex-row md:items-start">
             <div className="flex-1 space-y-2">
               <p className="text-sm font-medium uppercase tracking-wide text-zen-subtext">
-                Final-Year Computer Engineering Undergraduate, University of
-                Ruhuna.
+                {HERO_DATA.subtitle}
               </p>
               <h1 className="font-heading text-4xl font-bold leading-tight text-zen-text md:text-5xl lg:text-6xl">
-                Building production-ready AI systems{" "}
+                {HERO_DATA.title}
                 <br className="hidden md:block" />
                 <span className="text-zen-subtext">
-                  from models to scalable software.
+                  {HERO_DATA.titleHighlight}
                 </span>
               </h1>
               <p className="text-xl font-medium text-zen-text md:text-2xl">
-                Software Engineer • AI/ML • Agentic AI • RAG
+                {HERO_DATA.status}
               </p>
             </div>
             <div className="flex-shrink-0">
               <div className="group relative h-40 w-40 overflow-hidden rounded-full border-2 border-zen-surface shadow-sm md:h-56 md:w-56">
                 <Image
-                  src="/profile.png"
+                  src={HERO_DATA.image}
                   alt="Profile Photo"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -51,35 +60,27 @@ export default async function Home() {
 
           {/* Proof Bar */}
           <div className="grid grid-cols-1 gap-4 border-y border-zen-surface py-6 md:grid-cols-3">
-            <div className="flex items-start gap-3">
-              <div className="mt-2.5 h-1.5 w-1.5 rounded-full bg-green-500"></div>
-              <p className="text-sm font-medium leading-relaxed text-zen-subtext">
-                AI & ML projects deployed end-to-end (training → API → UI)
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="mt-2.5 h-1.5 w-1.5 rounded-full bg-blue-500"></div>
-              <p className="text-sm font-medium leading-relaxed text-zen-subtext">
-                Experience with real-time systems, pipelines & model persistence
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="mt-2.5 h-1.5 w-1.5 rounded-full bg-purple-500"></div>
-              <p className="text-sm font-medium leading-relaxed text-zen-subtext">
-                Research-focused: Blockchain + GNNs for vehicular networks
-              </p>
-            </div>
+            {PROOF_BAR_DATA.map((item, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <div
+                  className={`mt-2.5 h-1.5 w-1.5 rounded-full ${item.color}`}
+                ></div>
+                <p className="text-sm font-medium leading-relaxed text-zen-subtext">
+                  {item.text}
+                </p>
+              </div>
+            ))}
           </div>
 
           <div className="flex flex-wrap gap-4 pt-4">
             <a
-              href="mailto:dilukshaupeka@gmail.com"
+              href={`mailto:${HERO_DATA.email}`}
               className="inline-flex items-center gap-2 rounded-lg bg-zen-text px-6 py-3 font-medium text-zen-bg transition-colors hover:bg-zen-accent"
             >
               <Mail size={18} /> Contact Me
             </a>
             <a
-              href="/cv.pdf"
+              href={HERO_DATA.cv}
               download
               className="inline-flex items-center gap-2 rounded-lg border border-zen-surface px-6 py-3 font-medium text-zen-text transition-colors hover:bg-zen-paper"
             >
@@ -92,7 +93,7 @@ export default async function Home() {
               View Work
             </a>
             <a
-              href="https://github.com/Diluksha-Upeka"
+              href={HERO_DATA.github}
               target="_blank"
               className="inline-flex items-center gap-2 rounded-lg border border-zen-surface px-6 py-3 font-medium text-zen-text transition-colors hover:bg-zen-paper"
             >
@@ -107,66 +108,8 @@ export default async function Home() {
             <h2 className="font-heading text-2xl font-bold">
               Product Showcase
             </h2>
-            <a
-              href="/projects"
-              className="group flex items-center gap-1 text-sm font-medium text-zen-subtext transition-colors hover:text-zen-text"
-            >
-              View all projects
-              <ArrowUpRight
-                size={14}
-                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              />
-            </a>
           </div>
-          <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {[
-              {
-                id: "context-iq",
-                title: "Context IQ Demo",
-                src: "/projects/contextiq-demo.mp4",
-                link: "https://contextiq-rag.vercel.app/",
-              },
-              // Add more videos here:
-              // {
-              //   id: "next-project",
-              //   title: "Next Project Demo",
-              //   src: "/projects/next-demo.mp4",
-              //   link: "https://your-link.app/",
-              // }
-            ].map((video) => (
-              <div
-                key={video.id}
-                className="relative w-[85vw] shrink-0 snap-center overflow-hidden rounded-xl border border-zen-surface bg-zen-paper p-4 md:w-[450px] lg:w-[500px]"
-              >
-                <div className="aspect-video w-full overflow-hidden rounded-lg bg-zen-bg">
-                  <video
-                    src={video.src}
-                    className="h-full w-full object-cover"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    controls
-                  />
-                </div>
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="text-sm font-medium text-zen-text">
-                    {video.title}
-                  </span>
-                  {video.link && (
-                    <a
-                      href={video.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-lg border border-zen-surface bg-zen-bg px-4 py-2 text-xs font-semibold text-zen-text transition-colors hover:bg-zen-surface"
-                    >
-                      Live Demo <ArrowUpRight size={14} />
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
+          <VideoCarousel />
         </section>
 
         {/* Technical Arsenal - Grid View */}
@@ -178,98 +121,31 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="space-y-4">
-              <h4 className="flex items-center gap-2 font-heading text-sm font-bold uppercase tracking-wider text-zen-subtext">
-                🧠 AI / ML Systems
-              </h4>
-              <ul className="space-y-3 text-sm font-medium text-zen-text">
-                <li className="flex items-start gap-2">
-                  <span className="text-zen-subtext/60 mt-1">•</span>
-                  <span>Model training, evaluation & persistence</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-zen-subtext/60 mt-1">•</span>
-                  <span>Pipelines (scikit-learn, custom preprocessing)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-zen-subtext/60 mt-1">•</span>
-                  <span>Computer Vision (OpenCV, real-time inference)</span>
-                </li>
-                <li className="flex flex-wrap gap-2 pt-2 opacity-75">
-                  <span className="rounded border border-zen-surface bg-zen-paper px-2 py-0.5 text-xs">
-                    TensorFlow
-                  </span>
-                  <span className="rounded border border-zen-surface bg-zen-paper px-2 py-0.5 text-xs">
-                    PyTorch
-                  </span>
-                  <span className="rounded border border-zen-surface bg-zen-paper px-2 py-0.5 text-xs">
-                    Python
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="flex items-center gap-2 font-heading text-sm font-bold uppercase tracking-wider text-zen-subtext">
-                🌐 Software Engineering
-              </h4>
-              <ul className="space-y-3 text-sm font-medium text-zen-text">
-                <li className="flex items-start gap-2">
-                  <span className="text-zen-subtext/60 mt-1">•</span>
-                  <span>REST & real-time APIs (Node.js, Socket.io)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-zen-subtext/60 mt-1">•</span>
-                  <span>Frontend systems (React, Next.js, React Native)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-zen-subtext/60 mt-1">•</span>
-                  <span>Authentication, state management, scalability</span>
-                </li>
-                <li className="flex flex-wrap gap-2 pt-2 opacity-75">
-                  <span className="rounded border border-zen-surface bg-zen-paper px-2 py-0.5 text-xs">
-                    TypeScript
-                  </span>
-                  <span className="rounded border border-zen-surface bg-zen-paper px-2 py-0.5 text-xs">
-                    Node.js
-                  </span>
-                  <span className="rounded border border-zen-surface bg-zen-paper px-2 py-0.5 text-xs">
-                    Next.js
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="flex items-center gap-2 font-heading text-sm font-bold uppercase tracking-wider text-zen-subtext">
-                ☁️ Dev & Ops
-              </h4>
-              <ul className="space-y-3 text-sm font-medium text-zen-text">
-                <li className="flex items-start gap-2">
-                  <span className="text-zen-subtext/60 mt-1">•</span>
-                  <span>Dockerized services & containers</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-zen-subtext/60 mt-1">•</span>
-                  <span>AWS deployment basics</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-zen-subtext/60 mt-1">•</span>
-                  <span>Git-based collaboration & CI mindset</span>
-                </li>
-                <li className="flex flex-wrap gap-2 pt-2 opacity-75">
-                  <span className="rounded border border-zen-surface bg-zen-paper px-2 py-0.5 text-xs">
-                    Docker
-                  </span>
-                  <span className="rounded border border-zen-surface bg-zen-paper px-2 py-0.5 text-xs">
-                    Git
-                  </span>
-                  <span className="rounded border border-zen-surface bg-zen-paper px-2 py-0.5 text-xs">
-                    Linux
-                  </span>
-                </li>
-              </ul>
-            </div>
+            {TECH_ARSENAL.map((category, idx) => (
+              <div key={idx} className="space-y-4">
+                <h4 className="flex items-center gap-2 font-heading text-sm font-bold uppercase tracking-wider text-zen-subtext">
+                  {category.category}
+                </h4>
+                <ul className="space-y-3 text-sm font-medium text-zen-text">
+                  {category.bullets.map((bullet, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="text-zen-subtext/60 mt-1">•</span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                  <li className="flex flex-wrap gap-2 pt-2 opacity-75">
+                    {category.tags.map((tag, tagIdx) => (
+                      <span
+                        key={tagIdx}
+                        className="rounded border border-zen-surface bg-zen-paper px-2 py-0.5 text-xs"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </li>
+                </ul>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -343,9 +219,16 @@ export default async function Home() {
             <h2 className="font-heading text-2xl font-bold">
               Featured Projects
             </h2>
-            <span className="hidden text-xs font-medium uppercase tracking-widest text-zen-subtext sm:block">
-              See all
-            </span>
+            <a
+              href="/projects"
+              className="group flex items-center gap-1 text-sm font-medium text-zen-subtext transition-colors hover:text-zen-text"
+            >
+              View all projects
+              <ArrowUpRight
+                size={14}
+                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </a>
           </div>
 
           <div className="space-y-16">
