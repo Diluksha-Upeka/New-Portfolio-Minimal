@@ -3,8 +3,46 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, X } from "lucide-react";
-import { FEATURED_PROJECTS, type Project } from "@/lib/data";
+import { ArrowUpRight, X, Github } from "lucide-react";
+import {
+  FEATURED_PROJECTS,
+  type Project,
+  type ProjectCategory,
+} from "@/lib/data";
+
+const categoryStyles: Record<
+  ProjectCategory,
+  {
+    label: string;
+    chipClass: string;
+    stripClass: string;
+  }
+> = {
+  "ai-ml": {
+    label: "AI / ML",
+    chipClass:
+      "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
+    stripClass: "bg-emerald-500/60",
+  },
+  "full-stack": {
+    label: "Full-Stack",
+    chipClass:
+      "border-blue-500/40 bg-blue-500/10 text-blue-700 dark:text-blue-300",
+    stripClass: "bg-blue-500/60",
+  },
+  "real-time": {
+    label: "Real-Time",
+    chipClass:
+      "border-cyan-500/40 bg-cyan-500/10 text-cyan-700 dark:text-cyan-300",
+    stripClass: "bg-cyan-500/60",
+  },
+  "mlops-infra": {
+    label: "MLOps / Infra",
+    chipClass:
+      "border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300",
+    stripClass: "bg-amber-500/60",
+  },
+};
 
 export default function FeaturedProjects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -12,52 +50,76 @@ export default function FeaturedProjects() {
   return (
     <>
       <div className="grid grid-cols-1 gap-8">
-        {FEATURED_PROJECTS.map((project) => (
-          <motion.div
-            layoutId={`card-${project.name}`}
-            key={project.name}
-            onClick={() => setSelectedProject(project)}
-            className="hover:border-zen-subtext/30 group relative cursor-pointer overflow-hidden rounded-2xl border border-zen-surface bg-zen-paper p-6 shadow-sm transition-all duration-300 hover:shadow-md md:p-8"
-          >
-            <div className="mb-4 flex flex-col items-start justify-between gap-2 md:flex-row md:items-center">
-              <motion.h3
-                layoutId={`title-${project.name}`}
-                className="flex items-center gap-2 font-heading text-xl font-bold text-zen-text transition-colors group-hover:text-zen-accent md:text-2xl"
-              >
-                {project.name}
-              </motion.h3>
-              <div className="flex flex-wrap items-center gap-2">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded border border-zen-surface bg-zen-paper px-2.5 py-1 text-xs font-medium text-zen-subtext"
+        {FEATURED_PROJECTS.map((project) => {
+          const style = categoryStyles[project.category];
+
+          return (
+            <motion.div
+              layoutId={`card-${project.name}`}
+              key={project.name}
+              onClick={() => setSelectedProject(project)}
+              className="hover:border-zen-subtext/30 group relative cursor-pointer overflow-hidden rounded-2xl border border-zen-surface bg-zen-paper p-5 shadow-sm transition-all duration-300 hover:shadow-md md:p-6"
+            >
+              <span
+                className={`absolute inset-y-0 left-0 w-1 ${style.stripClass}`}
+                aria-hidden="true"
+              />
+
+              <div className="mb-4 flex flex-col items-start justify-between gap-3 md:flex-row md:items-start">
+                <div className="space-y-1.5">
+                  <motion.h3
+                    layoutId={`title-${project.name}`}
+                    className="font-heading text-lg font-bold text-zen-text transition-colors group-hover:text-zen-accent md:text-xl"
                   >
-                    {t}
+                    {project.name}
+                  </motion.h3>
+                  <span
+                    className={`inline-flex rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest ${style.chipClass}`}
+                  >
+                    {style.label}
                   </span>
-                ))}
+                </div>
+
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {project.tech.slice(0, 3).map((t) => (
+                    <span
+                      key={t}
+                      className="rounded border border-zen-surface bg-zen-paper px-2.5 py-1 text-[10px] font-medium text-zen-subtext sm:text-xs"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                  {project.tech.length > 3 && (
+                    <span className="text-zen-subtext/70 rounded border border-transparent px-1 py-1 text-[10px] font-medium sm:text-xs">
+                      +{project.tech.length - 3}
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
-            <div className="space-y-4">
+
               <motion.p
                 layoutId={`desc-${project.name}`}
-                className="border-l-2 border-zen-surface pl-4 text-base leading-relaxed text-zen-text md:text-lg"
+                className="border-l-2 border-zen-surface pl-4 text-sm leading-relaxed text-zen-text md:text-base"
               >
                 {project.description}
               </motion.p>
-              <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-                <p className="flex items-center gap-2 text-sm font-medium text-zen-subtext">
-                  <span className="h-1 w-1 rounded-full bg-zen-accent"></span>
-                  <span className="italic">
-                    Key learning: {project.learning}
-                  </span>
-                </p>
-                <button className="inline-flex shrink-0 items-center border-b border-transparent pb-0.5 text-sm font-bold text-zen-subtext transition-colors group-hover:border-zen-accent group-hover:text-zen-accent">
-                  View Details <ArrowUpRight size={16} className="ml-1" />
-                </button>
+
+              <div className="pt-4">
+                <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+                  <p className="flex items-center gap-2 text-xs font-medium text-zen-subtext md:text-sm">
+                    <span className="h-1 w-1 rounded-full bg-zen-accent"></span>
+                    <span className="line-clamp-1 max-w-[200px] italic md:max-w-xs xl:max-w-sm">
+                      Key learning: {project.learning}
+                    </span>
+                  </p>
+                  <button className="inline-flex shrink-0 items-center border-b border-transparent pb-0.5 text-xs font-bold text-zen-subtext transition-colors group-hover:border-zen-accent group-hover:text-zen-accent md:text-sm">
+                    View Details <ArrowUpRight size={16} className="ml-1" />
+                  </button>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          );
+        })}
       </div>
 
       <AnimatePresence>
@@ -145,13 +207,28 @@ export default function FeaturedProjects() {
                   </div>
 
                   <div className="pt-2">
-                    <a
-                      href={selectedProject.link}
-                      target="_blank"
-                      className="flex w-full items-center justify-center gap-2 rounded-lg bg-zen-text py-3 text-sm font-bold text-zen-bg transition-all hover:bg-zen-accent"
-                    >
-                      Visit Live Site <ArrowUpRight size={16} />
-                    </a>
+                    <div className="flex flex-col gap-3 sm:flex-row">
+                      {selectedProject.liveUrl && (
+                        <a
+                          href={selectedProject.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-zen-text py-3 text-sm font-bold text-zen-bg transition-all hover:bg-zen-accent"
+                        >
+                          Visit Live Site <ArrowUpRight size={16} />
+                        </a>
+                      )}
+                      {selectedProject.githubUrl && (
+                        <a
+                          href={selectedProject.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-zen-surface bg-zen-paper py-3 text-sm font-bold text-zen-text transition-all hover:bg-zen-surface hover:text-zen-accent"
+                        >
+                          View Source <Github size={16} />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
