@@ -83,6 +83,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
+                aria-label={item.name}
                 className={`group relative rounded-full px-3 py-2 text-sm font-medium transition-colors ${
                   isActive
                     ? "text-zen-text"
