@@ -115,6 +115,7 @@ export const FEATURED_PROJECTS: Project[] = [
     category: "ai-ml",
     logo: "NS",
     githubUrl: "https://github.com/Diluksha-Upeka/Neurospace",
+    image: "/projects/neurospace.png",
   },
   {
     name: "ContextIQ (RAG System)",
@@ -140,6 +141,19 @@ export const FEATURED_PROJECTS: Project[] = [
     logo: "AD",
     githubUrl: "https://github.com/Diluksha-Upeka/ai-analyst",
     liveUrl: "https://ai-data-chat.streamlit.app/",
+    image: "/projects/analyst.png",
+  },
+  {
+    name: "Resume Optimizer",
+    description:
+      "A Streamlit dashboard that parses resumes into structured JSON and provides an ATS score using Llama 3.",
+    learning:
+      "Built structured extraction pipelines with prompt design for ATS-focused feedback.",
+    tech: ["Python", "Streamlit", "LangChain", "Llama 3"],
+    category: "ai-ml",
+    logo: "RO",
+    liveUrl: "https://ai-resume-diluksha.streamlit.app/",
+    image: "/projects/resume.png",
   },
   {
     name: "Salary Estimator (MLOps Pipeline)",
