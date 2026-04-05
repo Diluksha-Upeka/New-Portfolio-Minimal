@@ -101,6 +101,74 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* Video Showcase Carousel */}
+        <section id="showcase" className="space-y-8">
+          <div className="flex items-baseline justify-between border-b border-zen-surface pb-4">
+            <h2 className="font-heading text-2xl font-bold">
+              Product Showcase
+            </h2>
+            <a
+              href="/projects"
+              className="group flex items-center gap-1 text-sm font-medium text-zen-subtext transition-colors hover:text-zen-text"
+            >
+              View all projects
+              <ArrowUpRight
+                size={14}
+                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </a>
+          </div>
+          <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {[
+              {
+                id: "context-iq",
+                title: "Context IQ Demo",
+                src: "/projects/contextiq-demo.mp4",
+                link: "https://contextiq-rag.vercel.app/",
+              },
+              // Add more videos here:
+              // {
+              //   id: "next-project",
+              //   title: "Next Project Demo",
+              //   src: "/projects/next-demo.mp4",
+              //   link: "https://your-link.app/",
+              // }
+            ].map((video) => (
+              <div
+                key={video.id}
+                className="relative w-[85vw] shrink-0 snap-center overflow-hidden rounded-xl border border-zen-surface bg-zen-paper p-4 md:w-[450px] lg:w-[500px]"
+              >
+                <div className="aspect-video w-full overflow-hidden rounded-lg bg-zen-bg">
+                  <video
+                    src={video.src}
+                    className="h-full w-full object-cover"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    controls
+                  />
+                </div>
+                <div className="mt-4 flex items-center justify-between">
+                  <span className="text-sm font-medium text-zen-text">
+                    {video.title}
+                  </span>
+                  {video.link && (
+                    <a
+                      href={video.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-lg border border-zen-surface bg-zen-bg px-4 py-2 text-xs font-semibold text-zen-text transition-colors hover:bg-zen-surface"
+                    >
+                      Live Demo <ArrowUpRight size={14} />
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Technical Arsenal - Grid View */}
         <section id="tech" className="space-y-12">
           <div className="flex items-baseline justify-between border-b border-zen-surface pb-4">
