@@ -5,6 +5,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Navbar from "@/components/Navbar";
 import SmoothScroll from "@/components/SmoothScroll";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import ConsoleGreeting from "@/components/ConsoleGreeting";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({
@@ -23,8 +24,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="relative mx-auto min-h-screen max-w-3xl bg-zen-bg px-6 pb-10 pt-6 text-zen-text selection:bg-zen-surface">
+    <html
+      lang="en"
+      className={`${inter.variable} ${spaceGrotesk.variable}`}
+      suppressHydrationWarning
+    >
+      <body
+        className="relative mx-auto min-h-screen max-w-3xl bg-zen-bg px-6 pb-10 pt-6 text-zen-text selection:bg-zen-surface"
+        suppressHydrationWarning
+      >
+        <ConsoleGreeting />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
