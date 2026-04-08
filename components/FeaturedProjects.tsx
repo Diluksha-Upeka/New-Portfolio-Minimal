@@ -44,82 +44,157 @@ const categoryStyles: Record<
   },
 };
 
+type CategoryFilter = "all" | ProjectCategory;
+
+const categoryFilterLabels: Record<CategoryFilter, string> = {
+  all: "All",
+  "ai-ml": "AI / ML",
+  "full-stack": "Full-Stack",
+  "real-time": "Real-Time",
+  "mlops-infra": "MLOps / Infra",
+};
+
+const INITIAL_VISIBLE_PROJECTS = 4;
+
 export default function FeaturedProjects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
+  const [showAll, setShowAll] = useState(false);
+
+  const filteredProjects =
+    activeCategory === "all"
+      ? FEATURED_PROJECTS
+      : FEATURED_PROJECTS.filter(
+          (project) => project.category === activeCategory
+        );
+
+  const visibleProjects = showAll
+    ? filteredProjects
+    : filteredProjects.slice(0, INITIAL_VISIBLE_PROJECTS);
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-8">
-        {FEATURED_PROJECTS.map((project) => {
-          const style = categoryStyles[project.category];
+      <div className="space-y-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap gap-2">
+            {(
+              [
+                "all",
+                "ai-ml",
+                "full-stack",
+                "real-time",
+                "mlops-infra",
+              ] as const
+            ).map((category) => {
+              const isActive = activeCategory === category;
 
-          return (
-            <motion.div
-              layoutId={`card-${project.name}`}
-              key={project.name}
-              onClick={() => setSelectedProject(project)}
-              className="hover:border-zen-subtext/30 group relative cursor-pointer overflow-hidden rounded-2xl border border-zen-surface bg-zen-paper p-5 shadow-sm transition-all duration-300 hover:shadow-md md:p-6"
-            >
-              <span
-                className={`absolute inset-y-0 left-0 w-1 ${style.stripClass}`}
-                aria-hidden="true"
-              />
+              return (
+                <button
+                  key={category}
+                  onClick={() => {
+                    setActiveCategory(category);
+                    setShowAll(false);
+                  }}
+                  className={`rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors ${
+                    isActive
+                      ? "border-zen-subtext bg-zen-paper text-zen-text"
+                      : "border-zen-surface text-zen-subtext hover:bg-zen-paper"
+                  }`}
+                >
+                  {categoryFilterLabels[category]}
+                </button>
+              );
+            })}
+          </div>
 
-              <div className="mb-4 flex flex-col items-start justify-between gap-3 md:flex-row md:items-start">
-                <div className="space-y-1.5">
-                  <motion.h3
-                    layoutId={`title-${project.name}`}
-                    className="font-heading text-lg font-bold text-zen-text transition-colors group-hover:text-zen-accent md:text-xl"
-                  >
-                    {project.name}
-                  </motion.h3>
-                  <span
-                    className={`inline-flex rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest ${style.chipClass}`}
-                  >
-                    {style.label}
-                  </span>
-                </div>
+          <p className="text-xs font-medium uppercase tracking-widest text-zen-subtext">
+            Showing {visibleProjects.length} of {filteredProjects.length}
+          </p>
+        </div>
 
-                <div className="flex flex-wrap items-center gap-1.5">
-                  {project.tech.slice(0, 3).map((t) => (
-                    <span
-                      key={t}
-                      className="rounded border border-zen-surface bg-zen-paper px-2.5 py-1 text-[10px] font-medium text-zen-subtext sm:text-xs"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                  {project.tech.length > 3 && (
-                    <span className="text-zen-subtext/70 rounded border border-transparent px-1 py-1 text-[10px] font-medium sm:text-xs">
-                      +{project.tech.length - 3}
-                    </span>
-                  )}
-                </div>
-              </div>
+        <div className="grid grid-cols-1 gap-6">
+          {visibleProjects.map((project) => {
+            const style = categoryStyles[project.category];
 
-              <motion.p
-                layoutId={`desc-${project.name}`}
-                className="border-l-2 border-zen-surface pl-4 text-sm leading-relaxed text-zen-text md:text-base"
+            return (
+              <motion.div
+                layoutId={`card-${project.name}`}
+                key={project.name}
+                onClick={() => setSelectedProject(project)}
+                className="hover:border-zen-subtext/30 group relative cursor-pointer overflow-hidden rounded-2xl border border-zen-surface bg-zen-paper p-5 shadow-sm transition-all duration-300 hover:shadow-md md:p-6"
               >
-                {project.description}
-              </motion.p>
+                <span
+                  className={`absolute inset-y-0 left-0 w-1 ${style.stripClass}`}
+                  aria-hidden="true"
+                />
 
-              <div className="pt-4">
-                <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
-                  <p className="flex items-center gap-2 text-xs font-medium text-zen-subtext md:text-sm">
-                    <span className="h-1 w-1 rounded-full bg-zen-accent"></span>
-                    <span className="line-clamp-1 max-w-[200px] italic md:max-w-xs xl:max-w-sm">
-                      Key learning: {project.learning}
+                <div className="mb-4 flex flex-col items-start justify-between gap-3 md:flex-row md:items-start">
+                  <div className="space-y-1.5">
+                    <motion.h3
+                      layoutId={`title-${project.name}`}
+                      className="font-heading text-lg font-bold text-zen-text transition-colors group-hover:text-zen-accent md:text-xl"
+                    >
+                      {project.name}
+                    </motion.h3>
+                    <span
+                      className={`inline-flex rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest ${style.chipClass}`}
+                    >
+                      {style.label}
                     </span>
-                  </p>
-                  <button className="inline-flex shrink-0 items-center border-b border-transparent pb-0.5 text-xs font-bold text-zen-subtext transition-colors group-hover:border-zen-accent group-hover:text-zen-accent md:text-sm">
-                    View Details <ArrowUpRight size={16} className="ml-1" />
-                  </button>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    {project.tech.slice(0, 3).map((t) => (
+                      <span
+                        key={t}
+                        className="rounded border border-zen-surface bg-zen-paper px-2.5 py-1 text-[10px] font-medium text-zen-subtext sm:text-xs"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                    {project.tech.length > 3 && (
+                      <span className="text-zen-subtext/70 rounded border border-transparent px-1 py-1 text-[10px] font-medium sm:text-xs">
+                        +{project.tech.length - 3}
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          );
-        })}
+
+                <motion.p
+                  layoutId={`desc-${project.name}`}
+                  className="border-l-2 border-zen-surface pl-4 text-sm leading-relaxed text-zen-text md:text-base"
+                >
+                  {project.description}
+                </motion.p>
+
+                <div className="pt-4">
+                  <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+                    <p className="flex items-center gap-2 text-xs font-medium text-zen-subtext md:text-sm">
+                      <span className="h-1 w-1 rounded-full bg-zen-accent"></span>
+                      <span className="line-clamp-1 max-w-[200px] italic md:max-w-xs xl:max-w-sm">
+                        Key learning: {project.learning}
+                      </span>
+                    </p>
+                    <button className="inline-flex shrink-0 items-center border-b border-transparent pb-0.5 text-xs font-bold text-zen-subtext transition-colors group-hover:border-zen-accent group-hover:text-zen-accent md:text-sm">
+                      View Details <ArrowUpRight size={16} className="ml-1" />
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {filteredProjects.length > INITIAL_VISIBLE_PROJECTS && (
+          <div className="flex justify-center pt-2">
+            <button
+              onClick={() => setShowAll((prev) => !prev)}
+              className="inline-flex items-center gap-2 rounded-full border border-zen-surface px-4 py-2 text-xs font-bold uppercase tracking-wider text-zen-subtext transition-colors hover:bg-zen-paper hover:text-zen-text"
+            >
+              {showAll ? "Show less" : "Show more"}
+            </button>
+          </div>
+        )}
       </div>
 
       <AnimatePresence>
