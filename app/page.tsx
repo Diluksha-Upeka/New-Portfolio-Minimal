@@ -161,9 +161,9 @@ export default async function Home() {
             <h2 className="font-heading text-2xl font-bold">Work Experience</h2>
           </div>
 
-          <div className="space-y-8">
+          <div className="group/list space-y-8">
             {/* Capricon Entry */}
-            <div className="hover:border-zen-subtext/30 group rounded-2xl border border-zen-surface bg-zen-paper p-6 shadow-sm transition-all duration-300 hover:shadow-md md:p-8">
+            <div className="hover:border-zen-subtext/30 group rounded-2xl border border-zen-surface bg-zen-paper p-6 shadow-sm transition-all duration-500 hover:!opacity-100 hover:shadow-md group-hover/list:opacity-40 md:p-8">
               <div className="mb-4 flex flex-col items-start justify-between gap-2 md:flex-row md:items-center">
                 <div>
                   <h3 className="font-heading text-xl font-bold text-zen-text">
@@ -227,7 +227,7 @@ export default async function Home() {
             </h2>
             <a
               href="/projects"
-              className="group flex items-center gap-1 text-sm font-medium text-zen-subtext transition-colors hover:text-zen-text"
+              className="zen-underline group flex items-center gap-1 text-sm font-medium text-zen-subtext transition-colors hover:text-zen-text"
             >
               View all projects
               <ArrowUpRight

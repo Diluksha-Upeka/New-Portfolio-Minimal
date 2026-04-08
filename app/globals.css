@@ -56,6 +56,43 @@
     scrollbar-width: none;
   }
 
+  /* Custom elegant scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-zen-surface;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-zen-subtext;
+  }
+
+  /* Dynamic animated underline for text links */
+  .zen-underline {
+    position: relative;
+    text-decoration: none;
+  }
+  .zen-underline::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    @apply bg-zen-text;
+    transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .zen-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
   .bg-grid-zen {
     background-size: 50px 50px;
     background-image:
