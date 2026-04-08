@@ -1,4 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="40" fill="none" stroke="#888888" stroke-width="8" />
-  <circle cx="50" cy="50" r="15" fill="#888888" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="16" y1="12" x2="112" y2="116" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#57534e" />
+      <stop offset="1" stop-color="#1c1917" />
+    </linearGradient>
+    <linearGradient id="ink" x1="34" y1="36" x2="109" y2="96" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fafaf9" />
+      <stop offset="1" stop-color="#d6d3d1" />
+    </linearGradient>
+  </defs>
+
+  <rect x="8" y="8" width="112" height="112" rx="28" fill="url(#bg)" />
+  <rect x="8" y="8" width="112" height="112" rx="28" stroke="#a8a29e" stroke-opacity="0.45" stroke-width="2" />
+
+  <path
+    d="M33 40V72C33 84 40 92 51 92C62 92 69 84 69 72V40"
+    stroke="url(#ink)"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M78 40V92"
+    stroke="url(#ink)"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+  <path
+    d="M78 40H86C99 40 108 50 108 66C108 82 99 92 86 92H78"
+    stroke="url(#ink)"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
 </svg>
