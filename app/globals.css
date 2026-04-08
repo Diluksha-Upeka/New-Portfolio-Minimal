@@ -64,6 +64,19 @@
     mask-image: radial-gradient(circle at center, black, transparent 80%);
   }
 
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
   .noise-bg {
     position: fixed;
     top: 0;

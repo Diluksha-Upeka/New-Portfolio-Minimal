@@ -31,15 +31,15 @@ export const HERO_DATA = {
 
 export const PROOF_BAR_DATA = [
   {
-    color: "bg-green-500",
+    color: "bg-zen-text opacity-60",
     text: "AI & ML projects deployed end-to-end (training \u2192 API \u2192 UI)",
   },
   {
-    color: "bg-blue-500",
+    color: "bg-zen-text opacity-40",
     text: "Experience with real-time systems, pipelines & model persistence",
   },
   {
-    color: "bg-purple-500",
+    color: "bg-zen-text opacity-20",
     text: "Research-focused: Blockchain + GNNs for vehicular networks",
   },
 ];

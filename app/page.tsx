@@ -26,7 +26,10 @@ export default async function Home() {
   return (
     <>
       <ScrollProgress />
-      <div className="relative space-y-24 md:space-y-32">
+      <div className="relative z-0 space-y-24 md:space-y-32">
+        {/* Ambient Background Glow */}
+        <div className="bg-zen-text/5 pointer-events-none absolute -top-20 right-10 -z-10 h-[300px] w-[300px] rounded-full blur-[100px] md:h-[500px] md:w-[500px]" />
+
         {/* Bio Section */}
         <section id="home" className="fade-in scroll-mt-32 space-y-8">
           <div className="flex flex-col-reverse items-center justify-between gap-8 md:flex-row md:items-start">
@@ -45,7 +48,7 @@ export default async function Home() {
                 {HERO_DATA.status}
               </p>
             </div>
-            <div className="flex-shrink-0">
+            <div className="animate-float flex-shrink-0">
               <div className="group relative h-40 w-40 overflow-hidden rounded-full border-2 border-zen-surface shadow-sm md:h-56 md:w-56">
                 <Image
                   src={HERO_DATA.image}
@@ -122,8 +125,11 @@ export default async function Home() {
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {TECH_ARSENAL.map((category, idx) => (
-              <div key={idx} className="space-y-4">
-                <h4 className="flex items-center gap-2 font-heading text-sm font-bold uppercase tracking-wider text-zen-subtext">
+              <div
+                key={idx}
+                className="hover:bg-zen-paper/40 group -ml-4 space-y-4 rounded-xl border border-transparent p-4 transition-colors hover:border-zen-surface"
+              >
+                <h4 className="flex items-center gap-2 font-heading text-sm font-bold uppercase tracking-wider text-zen-subtext transition-colors group-hover:text-zen-text">
                   {category.category}
                 </h4>
                 <ul className="space-y-3 text-sm font-medium text-zen-text">
