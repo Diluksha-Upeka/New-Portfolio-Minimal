@@ -87,7 +87,7 @@ export default async function Home() {
               <Download size={18} /> Download CV
             </a>
             <a
-              href="#work"
+              href="#projects"
               className="inline-flex items-center gap-2 rounded-lg border border-zen-surface px-6 py-3 font-medium text-zen-text transition-colors hover:bg-zen-paper"
             >
               View Work
