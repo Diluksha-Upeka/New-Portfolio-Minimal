@@ -77,7 +77,7 @@ export const TECH_ARSENAL = [
     bullets: [
       "Dockerized services & containers",
       "AWS deployment basics",
-      "Git-based collaboration & CI mindset",
+      "Git-based collaboration",
     ],
     tags: ["Docker", "Git", "Linux"],
   },
