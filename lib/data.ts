@@ -26,7 +26,7 @@ export const HERO_DATA = {
   email: "dilukshaupeka@gmail.com",
   github: "https://github.com/Diluksha-Upeka",
   linkedin: "https://www.linkedin.com/in/upeka-diluksha",
-  cv: "/cv.pdf",
+  cv: "/projects/cv.pdf",
 };
 
 export const PROOF_BAR_DATA = [
