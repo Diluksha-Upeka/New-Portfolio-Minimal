@@ -10,25 +10,54 @@ import Image from "next/image";
 import ScrollProgress from "@/components/ScrollProgress";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import VideoCarousel from "@/components/VideoCarousel";
-import {
-  HERO_DATA,
-  PROOF_BAR_DATA,
-  SHOWCASE_VIDEOS,
-  TECH_ARSENAL,
-  WORK_EXPERIENCE,
-  JOURNAL_PROJECTS,
-  CURRENT_FOCUS,
-} from "@/lib/data";
+import BentoFocus from "@/components/BentoFocus";
+import ConsoleGreeting from "@/components/ConsoleGreeting";
+import SkillsCloud from "@/components/SkillsCloud";
+import { HERO_DATA, PROOF_BAR_DATA } from "@/lib/data";
 
 export const revalidate = 3600;
 
 export default async function Home() {
   return (
     <>
+      <ConsoleGreeting />
       <ScrollProgress />
       <div className="relative z-0">
-        {/* Ambient Background Glow */}
+        {/* Ambient Tech Grid & Background Glow */}
+        <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden [mask-image:radial-gradient(ellipse_at_center_top,black,transparent_70%)]">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#888_1px,transparent_1px),linear-gradient(to_bottom,#888_1px,transparent_1px)] bg-[size:32px_32px] opacity-[0.04]" />
+        </div>
         <div className="bg-zen-text/5 pointer-events-none absolute -top-20 right-10 -z-10 h-[300px] w-[300px] rounded-full blur-[100px] md:h-[500px] md:w-[500px]" />
+
+        {/* Floating AI Node */}
+        <div className="pointer-events-none absolute right-[5%] top-32 -z-10 opacity-30 md:right-20 md:top-40">
+          <div className="h-32 w-32 animate-[spin_12s_linear_infinite] xl:h-48 xl:w-48">
+            <div className="absolute -left-2 top-1/2 h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.8)]" />
+            <div className="absolute -top-2 left-1/2 h-2 w-2 rounded-full bg-purple-500 shadow-[0_0_12px_rgba(168,85,247,0.8)]" />
+            <div className="absolute -right-2 top-1/2 h-2 w-2 rounded-full bg-green-500 shadow-[0_0_12px_rgba(34,197,94,0.8)]" />
+            <div className="absolute -bottom-2 left-1/2 h-2 w-2 rounded-full bg-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.8)]" />
+            <svg
+              className="h-full w-full text-zen-surface"
+              viewBox="0 0 100 100"
+            >
+              <polygon
+                points="50,0 100,50 50,100 0,50"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="30"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="0.5"
+                strokeDasharray="4 4"
+              />
+            </svg>
+          </div>
+        </div>
 
         <div className="space-y-24 md:space-y-32">
           {/* Bio Section */}
@@ -116,7 +145,7 @@ export default async function Home() {
             <VideoCarousel />
           </section>
 
-          {/* Technical Arsenal - Grid View */}
+          {/* Technical Arsenal - Interactive Cloud */}
           <section id="tech" className="space-y-12">
             <div className="flex items-baseline justify-between border-b border-zen-surface pb-4">
               <h2 className="font-heading text-2xl font-bold">
@@ -124,36 +153,7 @@ export default async function Home() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {TECH_ARSENAL.map((category, idx) => (
-                <div
-                  key={idx}
-                  className="hover:bg-zen-paper/40 group -ml-4 space-y-4 rounded-xl border border-transparent p-4 transition-colors hover:border-zen-surface"
-                >
-                  <h4 className="flex items-center gap-2 font-heading text-sm font-bold uppercase tracking-wider text-zen-subtext transition-colors group-hover:text-zen-text">
-                    {category.category}
-                  </h4>
-                  <ul className="space-y-3 text-sm font-medium text-zen-text">
-                    {category.bullets.map((bullet, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="text-zen-subtext/60 mt-1">•</span>
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                    <li className="flex flex-wrap gap-2 pt-2 opacity-75">
-                      {category.tags.map((tag, tagIdx) => (
-                        <span
-                          key={tagIdx}
-                          className="rounded border border-zen-surface bg-zen-paper px-2 py-0.5 text-xs"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </li>
-                  </ul>
-                </div>
-              ))}
-            </div>
+            <SkillsCloud />
           </section>
 
           {/* Work Experience Section */}
@@ -189,13 +189,20 @@ export default async function Home() {
                 </div>
 
                 <div className="space-y-4">
-                  <p className="border-l-2 border-zen-surface pl-4 text-base leading-relaxed text-zen-text md:text-lg">
-                    Developed and maintained enterprise-level solutions,
-                    specifically focusing on a robust Point of Sale (POS)
-                    system. Handled backend logic for inventory management,
-                    sales tracking, and reporting modules to support business
-                    operations.
-                  </p>
+                  {/* Animated Data Pipeline Border */}
+                  <div className="relative pl-6">
+                    <div className="bg-zen-surface/30 absolute bottom-0 left-0 top-0 w-[2px] overflow-hidden rounded-full">
+                      <div className="absolute right-0 top-0 h-1/2 w-full animate-pulse bg-gradient-to-b from-transparent via-blue-500 to-transparent blur-[1px]"></div>
+                      <div className="absolute top-1/4 h-1/3 w-full animate-pulse bg-gradient-to-b from-transparent via-purple-500 to-transparent blur-[1px] [animation-delay:1s]"></div>
+                    </div>
+                    <p className="text-base leading-relaxed text-zen-text md:text-lg">
+                      Developed and maintained enterprise-level solutions,
+                      specifically focusing on a robust Point of Sale (POS)
+                      system. Handled backend logic for inventory management,
+                      sales tracking, and reporting modules to support business
+                      operations.
+                    </p>
+                  </div>
 
                   <div className="grid grid-cols-1 gap-4 pt-2 md:grid-cols-2">
                     <div className="border-zen-surface/50 bg-zen-paper/50 rounded-lg border p-3">
@@ -253,9 +260,12 @@ export default async function Home() {
                   <a
                     href="https://github.com/Diluksha-Upeka/learning-journal"
                     target="_blank"
-                    className="border-zen-surface/50 hover:bg-zen-paper/30 group -mx-4 flex flex-col justify-between rounded-lg border-b px-4 py-4 transition-colors md:flex-row md:items-center"
+                    className="border-zen-surface/50 hover:bg-zen-paper/30 group relative -mx-4 flex flex-col justify-between overflow-hidden rounded-lg border-b px-4 py-4 transition-all duration-300 hover:shadow-[inset_3px_0_0_0_rgba(74,222,128,0.8)] md:flex-row md:items-center"
                   >
-                    <div>
+                    {/* Hover Trace Effect */}
+                    <div className="pointer-events-none absolute right-0 top-0 h-full w-48 translate-x-full bg-gradient-to-l from-green-500/10 to-transparent opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100" />
+
+                    <div className="relative z-10">
                       <h4 className="flex items-center gap-2 font-bold text-zen-text transition-colors group-hover:text-zen-accent">
                         Engineering Learning Journal{" "}
                         <ArrowUpRight
@@ -277,9 +287,12 @@ export default async function Home() {
                   <a
                     href="https://github.com/Diluksha-Upeka/AI-Journal.git"
                     target="_blank"
-                    className="border-zen-surface/50 hover:bg-zen-paper/30 group -mx-4 flex flex-col justify-between rounded-lg border-b px-4 py-4 transition-colors md:flex-row md:items-center"
+                    className="border-zen-surface/50 hover:bg-zen-paper/30 group relative -mx-4 flex flex-col justify-between overflow-hidden rounded-lg border-b px-4 py-4 transition-all duration-300 hover:shadow-[inset_3px_0_0_0_rgba(59,130,246,0.8)] md:flex-row md:items-center"
                   >
-                    <div>
+                    {/* Hover Trace Effect */}
+                    <div className="pointer-events-none absolute right-0 top-0 h-full w-48 translate-x-full bg-gradient-to-l from-blue-500/10 to-transparent opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100" />
+
+                    <div className="relative z-10">
                       <h4 className="flex items-center gap-2 font-bold text-zen-text transition-colors group-hover:text-zen-accent">
                         AI Journal (30 Days of AI){" "}
                         <ArrowUpRight
@@ -299,42 +312,8 @@ export default async function Home() {
                 </div>
               </div>
 
-              {/* Current Focus */}
-              <section className="bg-zen-paper/50 rounded-2xl border border-zen-surface p-8 md:p-10">
-                <h3 className="mb-6 font-heading text-xl font-bold text-zen-text">
-                  Current Focus
-                </h3>
-
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-                  <div className="space-y-2">
-                    <p className="text-xs font-bold uppercase tracking-widest text-zen-subtext">
-                      Building
-                    </p>
-                    <p className="text-zen-text/90 text-sm leading-relaxed">
-                      Production-grade AI apps with clean APIs, observability,
-                      and predictable outputs.
-                    </p>
-                  </div>
-                  <div className="space-y-2">
-                    <p className="text-xs font-bold uppercase tracking-widest text-zen-subtext">
-                      Learning
-                    </p>
-                    <p className="text-zen-text/90 text-sm leading-relaxed">
-                      LLM system prompts, structured JSON extraction, and
-                      evaluation for reliability.
-                    </p>
-                  </div>
-                  <div className="space-y-2">
-                    <p className="text-xs font-bold uppercase tracking-widest text-zen-subtext">
-                      Open To
-                    </p>
-                    <p className="text-zen-text/90 text-sm leading-relaxed">
-                      AI/ML engineering, backend systems, and impactful product
-                      collaborations.
-                    </p>
-                  </div>
-                </div>
-              </section>
+              {/* Current Focus (Bento Style) */}
+              <BentoFocus />
 
               {/* Contact / CTA Section */}
               <section className="border-t border-zen-surface py-12">
