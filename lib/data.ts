@@ -46,6 +46,12 @@ export const PROOF_BAR_DATA = [
 
 export const SHOWCASE_VIDEOS = [
   {
+    id: "neurospace",
+    title: "NeuroSpace Demo",
+    src: "/projects/neurospace_demo.mp4",
+    link: "",
+  },
+  {
     id: "context-iq",
     title: "Context IQ Demo",
     src: "/projects/contextiq-demo.mp4",
